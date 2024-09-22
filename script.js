@@ -12,6 +12,9 @@ addBtn.addEventListener("click", (event) => {
         let newContent = document.createTextNode(taskText);
         newLi.appendChild(newContent);
         taskList.appendChild(newLi)
+
+        // Clear the Input field after adding the task
+        taskInput.value = ""; // The task field input return to default
     } else {
         alert("Please enter a task before adding.") // Alert if input is empty
     }
