@@ -10,9 +10,10 @@ function addTask() {
         // Create a new list element
         let newLi = document.createElement("li"); 
 
-        // Create text node for the task
-        let newContent = document.createTextNode(taskText);
-        newLi.appendChild(newContent);
+        // Create a span to hold the task text
+        let taskSpan = document.createElement("span");
+        taskSpan.textContent = taskText;
+        newLi.appendChild(taskSpan);
         taskList.appendChild(newLi)
         
         // Create the "Remove" button
@@ -26,6 +27,29 @@ function addTask() {
                 newLi.remove();
             }
         })
+
+        // Create the "Edit" button
+        let editBtn = document.createElement("button");
+        editBtn.textContent = "Edit";
+        newLi.appendChild(editBtn);
+
+        // Clicking the "Edit" button
+        editBtn.addEventListener("click", () => {
+            let input = document.createElement("input");
+            input.type = "text";
+            input.value = taskSpan.textContent;
+            newLi.replaceChild(input, taskSpan);
+
+            editBtn.textContent = "Save"; // Change button to "Save"
+
+            // Clicking "Save" after editing
+            editBtn.addEventListener("click", () => {
+                taskSpan.textContent = input.value;
+                newLi.replaceChild(taskSpan, input);
+
+                editBtn.textContent = "Edit"; // Revert button back
+            });
+        });
 
         // Clear the input field
         taskInput.value = ""; 
