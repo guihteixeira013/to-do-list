@@ -55,17 +55,13 @@ function addTask() {
             // })
             // !!!!! I CAN'T SETUP THE "CANCEL" BUTTON !!!!!
 
-            // Clicking "Save" after editing
             editBtn.addEventListener("click", () => {
                 taskSpan.textContent = input.value;
                 newLi.replaceChild(taskSpan, input);
                 
                 editBtn.textContent = "Edit"; // Revert button back
                 newLi.appendChild(removeBtn); // Creating "Remove" button again
-                cancelBtn.remove();
             });
-
-
         });
 
         // Clear the input field
