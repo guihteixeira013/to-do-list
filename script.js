@@ -16,6 +16,11 @@ function addTask() {
         newLi.appendChild(taskSpan);
         taskList.appendChild(newLi)
         
+        // Create the "Edit" button
+        let editBtn = document.createElement("button");
+        editBtn.textContent = "Edit";
+        newLi.appendChild(editBtn);
+        
         // Create the "Remove" button
         let removeBtn = document.createElement("button");
         removeBtn.textContent = "Remove";
@@ -28,27 +33,39 @@ function addTask() {
             }
         })
 
-        // Create the "Edit" button
-        let editBtn = document.createElement("button");
-        editBtn.textContent = "Edit";
-        newLi.appendChild(editBtn);
-
         // Clicking the "Edit" button
         editBtn.addEventListener("click", () => {
             let input = document.createElement("input");
             input.type = "text";
             input.value = taskSpan.textContent;
             newLi.replaceChild(input, taskSpan);
+            
+            editBtn.textContent = "Save"; // Change button "Edit" to "Save"
+            removeBtn.remove(); // Delete "Remove" button
 
-            editBtn.textContent = "Save"; // Change button to "Save"
+            // // Create the "Cancel" button
+            // let cancelBtn = document.createElement("button");
+            // cancelBtn.textContent = "Cancel";
+            // newLi.appendChild(cancelBtn);
+
+            // // Clicking "Cancel" button
+            // cancelBtn.addEventListener("click", () => {
+            //     newLi.replaceChild(taskSpan, input);
+            //     cancelBtn.remove();
+            // })
+            // !!!!! I CAN'T SETUP THE "CANCEL" BUTTON !!!!!
 
             // Clicking "Save" after editing
             editBtn.addEventListener("click", () => {
                 taskSpan.textContent = input.value;
                 newLi.replaceChild(taskSpan, input);
-
+                
                 editBtn.textContent = "Edit"; // Revert button back
+                newLi.appendChild(removeBtn); // Creating "Remove" button again
+                cancelBtn.remove();
             });
+
+
         });
 
         // Clear the input field
