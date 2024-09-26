@@ -10,6 +10,11 @@ function addTask() {
         // Create a new list element
         let newLi = document.createElement("li"); 
 
+        // Create a checkbox
+        let checkBox = document.createElement("input");
+        checkBox.type = "checkbox";
+        newLi.appendChild(checkBox);
+
         // Create a span to hold the task text
         let taskSpan = document.createElement("span");
         taskSpan.textContent = taskText;
@@ -28,7 +33,7 @@ function addTask() {
 
         // Clicking the "Remove" button
         removeBtn.addEventListener("click", () => {
-            if (confirm("Are you sure you want to delete this task?")) {
+            if (confirm("Are you sure?")) {
                 newLi.remove();
             }
         })
