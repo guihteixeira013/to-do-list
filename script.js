@@ -71,6 +71,15 @@ function addTask() {
 
         // Clear the input field
         taskInput.value = ""; 
+
+        // Clicking the "checkbox" button
+        checkBox.addEventListener("change", () => {
+            if (checkBox.checked) {
+                newLi.classList.add("taskDone"); // Apply .taskDone class
+            } else {
+                newLi.classList.remove("taskDone"); // Remove .taskDone class
+            }
+        });
     } else {
         alert("Please enter a task before adding.") // Alert if input is empty
     }
