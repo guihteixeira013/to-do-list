@@ -9,6 +9,7 @@ function addTask() {
     if (taskText !== "") {
         // Create a new list element
         let newLi = document.createElement("li"); 
+        newLi.style.listStyleType = "none"; // Removing default dot
 
         // Create a checkbox
         let checkBox = document.createElement("input");

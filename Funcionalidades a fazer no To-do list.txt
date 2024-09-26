@@ -1,7 +1,5 @@
 Funcionalidades To-do list:
 
-Marcar como concluída:
-	Você pode fazer isso aplicando uma classe que altera o estilo da tarefa 
 
 Persistência de dados:
 	Use o localStorage para salvar a lista de tarefas, de modo que mesmo após 
